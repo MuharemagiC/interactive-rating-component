@@ -1,0 +1,26 @@
+<main class="main-wrapper">
+    <section class="{{ !isSubmitted ? 'card' : 'card-center' }}">
+        <ng-template [ngIf]="!isSubmitted">
+            <section class="oval"><img src="../../../assets/images/icon-star.svg" alt="star" /></section>
+            <h1>How did we do?</h1>
+            <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+            <section class="number-wrapper">
+                <section
+                    id="{{button.id}}"
+                    *ngFor="let button of buttons"
+                    (click)="handleNumberClick($event)"
+                    [ngClass]="{'oval ': true, 'number': true, 'number-active': button.isClicked}"
+                >
+                    {{button.id}}
+            </section>
+            </section>
+            <button class="submit-button" (click)="handleSubmit()">SUBMIT</button>
+        </ng-template>
+        <ng-template [ngIf]="isSubmitted">
+            <img src="../../../assets/images/illustration-thank-you.svg" alt="illustration-thank-you" width="162px" height="108px"/>
+            <section class="selected">You selected {{ selectedNumber }} out of 5</section>
+            <h1 class="thank-title">Thank You!</h1>
+            <p class="second-text">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+        </ng-template>
+    </section>
+</main>
